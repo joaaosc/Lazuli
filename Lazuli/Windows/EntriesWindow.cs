@@ -5,13 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Terminal.Gui;
 using NStack;
+using Terminal.Gui.Trees;
 
 namespace Lazuli.Windows;
 
 
-public class Physics : Window
+public class Entries : Window
 {
-    public Physics()
+    public Entries()
     {
 
 
@@ -24,6 +25,7 @@ public class Physics : Window
             }),
 
         });
+
 
 
         View Window = new View("TBD")
@@ -55,7 +57,7 @@ public class Physics : Window
 
         button.Clicked += () => Application.Run<Home>();
 
-        Add(menu,Window,NodeInputLabel,button);
+        Add(menu,button);
     }
 }
 
