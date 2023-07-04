@@ -8,7 +8,7 @@ class Program
     static void Main()
     {
         Application.Init();
-        Application.Run<Home>();
+        Application.Run<FirstTimeWindow>();
         Application.Shutdown();
     }
 }

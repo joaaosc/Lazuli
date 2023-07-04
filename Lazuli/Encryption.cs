@@ -9,10 +9,12 @@ namespace Lazuli
 {
     internal class Encryption
     {
+        public string hash;
+
         string TextFolderPath = @"C:\\Users\\JoãoPedroTorres\\source\\repos\\Lazuli\\Lazuli\\Texts\";
 
 
-        public void Encrypt(string message, string password,string entryTitle)
+        public void Encrypt(string message,string entryTitle)
         {
             byte[] encryptedBytes;
 
@@ -22,7 +24,7 @@ namespace Lazuli
                 byte[] initVector = new byte[16];   // valor aleatório usado em conjunto com a chave para inicializar o algoritmo
 
                 // criando a password com password passada e o vetor de inicialização
-                using (PasswordDeriveBytes passwordBytes = new PasswordDeriveBytes(password, null))     //PasswordDeriveBytes é uma implementação do algoritmo de derivação de chave baseado em senha PKCS #5
+                using (PasswordDeriveBytes passwordBytes = new PasswordDeriveBytes(this.hash, null))     //PasswordDeriveBytes é uma implementação do algoritmo de derivação de chave baseado em senha PKCS #5
                 {                                                                                              // usado pra transformar senha numa chave
                     key = passwordBytes.GetBytes(32);   // chave com 32 bytes
                     initVector = passwordBytes.GetBytes(16);    // initVector com 16 bytes
@@ -94,5 +96,26 @@ namespace Lazuli
 
             return decryptedString;
         }
+
+        public string GenerateHash(string password)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                // convert password to bytes
+                byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
+
+                // calculate hash
+                byte[] hashBytes = sha256.ComputeHash(passwordBytes);
+
+                // convert back to string
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < hashBytes.Length; i++)
+                    builder.Append(hashBytes[i].ToString("x2"));
+
+                this.hash = builder.ToString();
+                return builder.ToString();
+            }
+        }
+
     }
 }

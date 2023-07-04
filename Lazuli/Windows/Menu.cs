@@ -115,7 +115,7 @@ public class Home : Window
             }
             else
             {
-                encryptInfo.Encrypt(writeField.Text.ToString(),"mypass",titleField.Text.ToString());
+                encryptInfo.Encrypt(writeField.Text.ToString()!,titleField.Text.ToString()!);
                 MessageBox.Query("Success", "Entry saved successfully (encrypted!)", "Ok");
                 writeField.Text = string.Empty;
                 titleField.Text = string.Empty;
