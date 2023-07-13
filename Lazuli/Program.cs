@@ -7,6 +7,7 @@ class Program
 {
     static void Main()
     {
+
         Application.Init();
         Application.Run<FirstTimeWindow>();
         Application.Shutdown();
