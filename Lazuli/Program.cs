@@ -1,5 +1,6 @@
-﻿using Lazuli.Windows;
+﻿using Spectre.Console;
 using Terminal.Gui;
+using Lazuli.Windows;
 
 namespace Lazuli;
 
@@ -7,9 +8,17 @@ class Program
 {
     static void Main()
     {
-        // apenas testando pra ver se o git funciona
-        Application.Init();
-        Application.Run<FirstTimeWindow>();
-        Application.Shutdown();
+
+        Application.Init(); //initializes a new instance of terminal.gui app. Creates a TopLevel and assign to Top.
+
+        Toplevel top = Application.Top; 
+        Widgets widgets = new Widgets();
+        
+        //adding widgets
+        top.Add(widgets.AddMenuBarWidget());
+
+
+        Application.Run();
+
     }
 }

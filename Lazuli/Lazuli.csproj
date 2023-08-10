@@ -12,11 +12,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Terminal.Gui" Version="1.12.1" />
+    <Folder Include="Texts\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Texts\" />
+    <PackageReference Include="Spectre.Console" Version="0.47.0" />
+    <PackageReference Include="Terminal.Gui" Version="1.13.5" />
   </ItemGroup>
 
 </Project>
