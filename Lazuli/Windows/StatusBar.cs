@@ -17,5 +17,6 @@ namespace Lazuli.Windows
 
             return statusBar;
         }
+
     }
 }
